@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi página privada</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101827;
+  color: white;
+  text-align: center;
+}
+#entrada {
+  padding: 100px 20px;
+}
+input, button {
+  padding: 13px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+}
+button {
+  background: #3478f6;
+  color: white;
+  cursor: pointer;
+}
+#contenido {
+  display: none;
+  padding: 30px;
+}
+.menu button {
+  margin: 10px;
+}
+.seccion {
+  display: none;
+  padding: 30px;
+  background: #1d2a40;
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+</style>
+</head>
+<body>
+
+<div id="entrada">
+  <h1>🔒 Acceso privado</h1>
+  <p>Introduce la contraseña para entrar</p>
+  <input type="password" id="clave" placeholder="Contraseña">
+  <br>
+  <button onclick="entrar()">ACCEDER</button>
+  <p id="error"></p>
+</div>
+
+<div id="contenido">
+  <h1>¡Bienvenido a mi página!</h1>
+  <p>Has conseguido entrar.</p>
+
+  <div class="menu">
+    <button onclick="mostrar('inicio')">Inicio</button>
+    <button onclick="mostrar('videos')">Vídeos</button>
+    <button onclick="mostrar('galeria')">Galería</button>
+    <button onclick="mostrar('info')">Información</button>
+  </div>
+
+  <div id="inicio" class="seccion">
+    <h2>Inicio</h2>
+    <p>Bienvenido a mi mundo.</p>
+  </div>
+
+  <div id="videos" class="seccion">
+    <h2>Vídeos</h2>
+    <p>Aquí podrás poner tus vídeos.</p>
+  </div>
+
+  <div id="galeria" class="seccion">
+    <h2>Galería</h2>
+    <p>Aquí podrás poner tus imágenes.</p>
+  </div>
+
+  <div id="info" class="seccion">
+    <h2>Información</h2>
+    <p>Información de mi página.</p>
+  </div>
+</div>
+
+<script>
+function entrar() {
+  if (document.getElementById("clave").value === "Gloria") {
+    document.getElementById("entrada").style.display = "none";
+    document.getElementById("contenido").style.display = "block";
+    mostrar("inicio");
+  } else {
+    document.getElementById("error").textContent = "Contraseña incorrecta";
+  }
+}
+
+function mostrar(id) {
+  document.querySelectorAll(".seccion").forEach(s => {
+    s.style.display = "none";
+  });
+  document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>
